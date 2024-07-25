@@ -1,17 +1,17 @@
 from datetime import datetime
 from pprint import pprint
 
-from functions.products import (
-    show_all_prods,
-    add_prod,
-    add_prods,
-    del_prod_by_name,
-    del_prod_by_numb,
-    show_sorted_prods,
-    sold_prod,
-    find_numb_prod_by_name,
-    show_sold_prods,
-    show_sales_history,
+from functions.animals import (
+    show_all_anims,
+    add_anims,
+    add_anim,
+    del_anim_by_name,
+    del_anim_by_numb,
+    show_sorted_anims,
+    cured_anim,
+    find_numb_anim_by_name,
+    show_cured_anims,
+    show_cure_history,
     find_palidrome,
 )
 from functions.employees import (
@@ -50,8 +50,8 @@ def unknowing_command() -> None:
 
 
 def main():
-    products = open_files.products
-    products_sold = open_files.products_sold
+    animals = open_files.animals
+    animals_cured = open_files.animals_cured
     reviews = open_files.reviews
     employees = open_files.employees
     log = open_files.log
@@ -119,32 +119,32 @@ def main():
             most_using_command[command] = 1
 
         match command:
-            case "show all prods":
-                show_all_prods(products)
-            case "add prod":
-                products = add_prod(products)
-            case "add prods":
-                products = add_prods(products)
-            case "del prod by name":
-                products = del_prod_by_name(products)
-            case "del prod by numb":
-                products = del_prod_by_numb(products)
-            case "show sorted prods":
-                show_sorted_prods(products)
-            case "sold prod":
-                products, products_sold = sold_prod(products, products_sold)
-            case "find numb prod by name":
-                find_numb_prod_by_name(products)
-            case "show sold prods":
-                show_sold_prods(products_sold)
-            case "show sales history":
-                show_sales_history(products_sold)
+            case "show_all_anims":
+                show_all_anims(animals)
+            case "add_anim":
+                animals = add_anim(animals)
+            case "add_anims":
+                animals = add_anims(animals)
+            case "del_anim_by_name":
+                animals = del_anim_by_name(animals)
+            case "del_anim_by_numb":
+                animals = del_anim_by_numb(animals)
+            case "show_sorted_anims":
+                show_sorted_anims(animals)
+            case "cured_anim":
+                animals, animals_cured = animals_cured(animals, animals_cured)
+            case "find_numb_anim_by_name":
+                find_numb_anim_by_name(animals)
+            case "show_cured_anims":
+                show_cured_anims(animals_cured)
+            case "show_cure_history":
+                show_cure_history(animals_cured)
             case "exit":
-                save_files.save_products(products)
+                save_files.save_animals(animals)
                 save_files.save_employees(employees)
                 save_files.save_log(log)
                 save_files.save_most_using_command(most_using_command)
-                save_files.save_products_sold(products_sold)
+                save_files.save_animals_cured(animals_cured)
                 save_files.save_reviews(reviews)
                 exit()
             case "add review":
@@ -152,7 +152,7 @@ def main():
             case "find repeated chars":
                 find_repeated_chars(reviews)
             case "find palidrome":
-                find_palidrome(products)
+                find_palidrome(animals)
             case "add employee":
                 employees = add_employee(employees)
             case "del employee":
